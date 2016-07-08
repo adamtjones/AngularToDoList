@@ -11,33 +11,32 @@
 	        <link rel='stylesheet' type='text/css' href='css/main.css'>
     </head>
     <body ng-controller="HeaderController as header">
-    
-
-        <!--<head>
+        <header>
             <h1>todos</h1>
-        </head>-->
+        </header>
 
-        <div class="denver">
-        	<h1>todos</h1>
+        <main class="denver">
             <form novalidate name="newItem" ng-submit="header.submit(newItem.$valid)"><!--removed method and action-->
-            	<table>
                 <input type='text' class='new-todo' placeholder='What needs to be done?' ng-model="header.form.name">
-                <tr ng-repeat="item in header.data">
-                	<td>{{item.name}}</td>
-                </tr>
-            </table>
-        </form>
-
-            <ul class='items'>
+            </form>    
+                <ul class='items' ng-repeat="item in header.data | orderBy:'name' track by $index ">
+                    <li>
+                        <article>
+                            <button class='check' ng-class='{'active': isActive}' ng-click='activeCheck()' type='button'></button>
+                            <p>{{item.name}}</p>
+                            <input type='text' class='edit-todo'> 
+                            <button class='delete'>X</button>
+                        </article>
+                    </li>
                 <!-- example of existing item (incomplete)-->
-                <li>
+                <!--<li>
                     <article>
                         <button class='check'></button>
                         <p>learn html</p>
                         <input type='text' class='edit-todo' value='learn html'>
                         <button class='delete'>X</button>
                     </article>
-                </li>
+                </li>-->
                 
                 <!-- example of completed item
                 <li>
@@ -60,7 +59,6 @@
                 </li>
                 -->
             </ul>
-</div>
             <footer>
                 <p class='remaining'><span class='incomplete-items'>0</span> items left</p>
                 <nav>

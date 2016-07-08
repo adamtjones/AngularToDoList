@@ -3,6 +3,9 @@
     angular
         .module('inventory', [])
         .controller('HeaderController', function Header() {
+        	
+        	var vm = this;
+
             if (localStorage.getItem("todos")!==null) {
             	this.data = JSON.parse(localStorage.getItem("todos"));
            } else {
@@ -18,6 +21,20 @@
 			this.form = [];
 		}
 	};
-});})();
+
+		var inventory = angular.module('inventory',[]);
+
+		inventory.controller('HeaderController', function(vm) {
+			vm.isActive = false;
+			vm.activeCheck = function() {
+				$vm.isActive = !vm.isActive;
+			}
+		});
+
+})
+
+
+
+        ;})();
 
 
