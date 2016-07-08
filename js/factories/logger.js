@@ -1,4 +1,4 @@
-'use strict';
+/*'use strict';
 
 (function () {
 angular.module('inventory').factory('API', function($http){
@@ -36,4 +36,4 @@ angular.module('inventory').factory('API', function($http){
         saveBlog: saveBlog,
   	};
 })
-})();
+})();*/

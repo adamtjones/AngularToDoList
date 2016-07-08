@@ -7,24 +7,17 @@
             	this.data = JSON.parse(localStorage.getItem("todos"));
            } else {
             	this.data = [];
-            };
+            }
 
 		this.submit = function (isValid) {
-		var newObj = {"name": this.form.name, /*"isComplete"=false*/};
+		var newObj = {"name": this.form.name, "isComplete": false};
 		
 		if (isValid) {
 			this.data.push(newObj);
 			localStorage.setItem('todos', JSON.stringify(this.data));
 			this.form = [];
-	}
-	
+		}
 	};
-
-	/*var itemsLeft =	data.length
-
-	$(".itemsLeft").append(itemsLeft+'items left')*/
-
-
-})})();
+});})();
 
 

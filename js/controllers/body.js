@@ -1,4 +1,4 @@
-(function() {
+/*(function() {
 	'use strict';
 	angular
 	    .module('inventory', [])
@@ -7,4 +7,4 @@
 	    	alert("IM COMING FROM BODY CONTROLLER");
 	       
 		});
-})();
+})();*/
