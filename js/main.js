@@ -1,6 +1,7 @@
 (function() {
     'use strict';
     angular
+<<<<<<< HEAD
         .module('inventory', []);
 })();
 /*above is main.js*/
@@ -8,6 +9,10 @@
 'use strict';
 
 angular.module('inventory').controller('HeaderController', function Header() {
+=======
+        .module('inventory', [])
+        .controller('HeaderController', function Header() {
+>>>>>>> 3bbada78e369608382a06011a1a79ac87498e038
         	
         	var vm = this;
 
@@ -17,8 +22,11 @@ angular.module('inventory').controller('HeaderController', function Header() {
             	this.data = [];
             }
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 3bbada78e369608382a06011a1a79ac87498e038
 		this.submit = function (isValid) {
 		var newObj = {"name": this.form.name, "isComplete": false};
 		
@@ -28,7 +36,11 @@ angular.module('inventory').controller('HeaderController', function Header() {
 			this.form = [];
 		}
 	};
+<<<<<<< HEAD
 		/*to toggle class*/
+=======
+
+>>>>>>> 3bbada78e369608382a06011a1a79ac87498e038
 		var inventory = angular.module('inventory',[]);
 
 		inventory.controller('HeaderController', function(vm) {
@@ -38,6 +50,7 @@ angular.module('inventory').controller('HeaderController', function Header() {
 			}
 		});
 
+<<<<<<< HEAD
 
 		vm.delete = function(){
 			this.data.splice(this.$index, 1);
@@ -69,10 +82,16 @@ vm.clear = function() {
 
 
 
+=======
+>>>>>>> 3bbada78e369608382a06011a1a79ac87498e038
 })
 
 
 
+<<<<<<< HEAD
         ;
+=======
+        ;})();
+>>>>>>> 3bbada78e369608382a06011a1a79ac87498e038
 
 
