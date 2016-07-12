@@ -19,17 +19,13 @@
             <form novalidate name="newItem" ng-submit="header.submit(newItem.$valid)"><!--removed method and action-->
                 <input type='text' class='new-todo' placeholder='What needs to be done?' ng-model="header.form.name">
             </form>    
-                <ul class='items' ng-repeat="item in header.data | orderBy:'name' track by $index ">
+                <ul class='items' ng-repeat="item in header.data track by $index">
                     <li>
-                        <article>
-                            <button class='check' ng-class='{'active': isActive}' ng-click='activeCheck()' type='button'></button>
+                        <article ng-class='{completed: item.isComplete}'>
+                            <button class='check' ng-click='header.changeStatus(item)' type='button'></button>
                             <p>{{item.name}}</p>
                             <input type='text' class='edit-todo'> 
-<<<<<<< HEAD
-                            <button ng-click="delete()" class='delete'>X</button>
-=======
-                            <button class='delete'>X</button>
->>>>>>> 3bbada78e369608382a06011a1a79ac87498e038
+                            <button class='delete' ng-click="removeTodo(todo)">X</button>
                         </article>
                     </li>
                 <!-- example of existing item (incomplete)-->
@@ -63,17 +59,16 @@
                 </li>
                 -->
             </ul>
-            <footer>
-<<<<<<< HEAD
-                <p class='remaining'><span class='incomplete-items'>{{remaining()}}</span> items left</p>
-=======
+            <footer id="footer" ng-show"todos.length" ng-cloak>
+
+                <p class='remaining'><span class='incomplete-items'>{{vm.remaining}}</span> items left</p>
+
                 <p class='remaining'><span class='incomplete-items'>0</span> items left</p>
->>>>>>> 3bbada78e369608382a06011a1a79ac87498e038
-                <nav>
+<nav>
                     <ul>
-                        <li><button class='show-all active'>All</button></li>
-                        <li><button class='show-active'>Active</button></li>
-                        <li><button class='show-completed'>Completed</button></li>
+                        <li><button class='show-all active' ng-click="header.activeCheck()">All</button></li>
+                        <li><button ng-click="header.activeCheck('true')" class='show-active'>Active</button></li>
+                        <li><button ng-click="header.activeCheck('false')" class='show-completed'>Completed</button></li>
                     </ul>
                 </nav>
                 <button class='clear'>Clear completed</button>

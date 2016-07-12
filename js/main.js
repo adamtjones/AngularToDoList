@@ -1,97 +1,101 @@
 (function() {
     'use strict';
     angular
-<<<<<<< HEAD
-        .module('inventory', []);
-})();
-/*above is main.js*/
-/*below will be controller.js*/
-'use strict';
-
-angular.module('inventory').controller('HeaderController', function Header() {
-=======
         .module('inventory', [])
         .controller('HeaderController', function Header() {
->>>>>>> 3bbada78e369608382a06011a1a79ac87498e038
-        	
-        	var vm = this;
 
-            if (localStorage.getItem("todos")!==null) {
-            	this.data = JSON.parse(localStorage.getItem("todos"));
-           } else {
-            	this.data = [];
+            var vm = this;
+
+            if (localStorage.getItem("todos") !== null) {
+                this.data = JSON.parse(localStorage.getItem("todos"));
+            } else {
+                this.data = [];
             }
 
-<<<<<<< HEAD
+            this.submit = function(isValid) {
+                var newObj = {
+                    "name": vm.form.name,
+                    "isComplete": false
+                };
 
 
-=======
->>>>>>> 3bbada78e369608382a06011a1a79ac87498e038
-		this.submit = function (isValid) {
-		var newObj = {"name": this.form.name, "isComplete": false};
-		
-		if (isValid) {
-			this.data.push(newObj);
-			localStorage.setItem('todos', JSON.stringify(this.data));
-			this.form = [];
-		}
-	};
-<<<<<<< HEAD
-		/*to toggle class*/
-=======
+                if (isValid) {
+                    vm.data.push(newObj);
+                    console.log(vm.data);
+                    localStorage.setItem('todos', JSON.stringify(vm.data));
+                    this.form = [];
+                }
+            };
 
->>>>>>> 3bbada78e369608382a06011a1a79ac87498e038
-		var inventory = angular.module('inventory',[]);
+            vm.changeStatus = function(item) {
+                if(item.isComplete === true)
+                {
+                    item.isComplete = false;
+                }
+                else
+                {
+                    item.isComplete = true;
+                }
+            };
+/*up to this point with Jake*/
+/*below is me Tuesday*/
+            //delete the Todo - this works!
+            vm.removeTodo = function(item) {
+                store.delete(item);
+            };
 
-		inventory.controller('HeaderController', function(vm) {
-			vm.isActive = false;
-			vm.activeCheck = function() {
-				$vm.isActive = !vm.isActive;
-			}
-		});
+            /*
+            Not working (items remaining count)
+            vm.$watch('todos', function () {
+            vm.remainingCount = $filter('filter')(todos, { completed: false }).length;
+            vm.completedCount = todos.length - vm.remainingCount;
+            vm.allChecked = !vm.remainingCount;
+        }, true);*/
 
-<<<<<<< HEAD
+            //clicking 'Active' shows only Incomplete
+            vm.activeCheck = function(active) {
+                            vm.active = active;
+                        };
 
-		vm.delete = function(){
-			this.data.splice(this.$index, 1);
-		};
+/*haven't touched below*/
+            
+            
 
-		vm.remaining = function() {
-    	var count = 0;
-    	angular.forEach(this.data, function(todo) {
-      	count += todo.done ? 0 : 1;
-    });
-    return count;
-  };
+            
+            //Items Left counter - looks good but not working
+            vm.remaining = function remainingCount() {
+                var count = 0;
+                angular.forEach(vm.data, function(item) {
+                    count += item.isComplete ? 0 : 1;
+                });
+                return count;
+            };
 
+            //clicking 'All' shows all
+            vm.allTodo = function(active) {
+                vm.active=
+            }
 
-vm.clear = function() {
-    var oldTodos = this.todos;
-    this.todos = [];
-    angular.forEach(oldTodos, function(todo) {
-      if (!todo.done) this.todos.push(todo);
-    });
-  };
+            //clicking 'Completed' shows only Complete
+            vm.allCompleted = function(active) {
+                vm.active!=active;
+            }
 
-  vm.clearCompleted = function () {
-        this.todos = _.filter(this.todos, function(todo){
-            return !todo.done;
-        });
-    };
+            //clicking 'Clear Completed' removes completed
+            vm.clear = function() {
+                var oldTodos = this.todos;
+                this.todos = [];
+                angular.forEach(oldTodos, function(todo) {
+                    if (!todo.done) this.todos.push(todo);
+                });
+            };
+            //or
+            vm.clearCompleted = function() {
+                this.todos = _.filter(this.todos, function(todo) {
+                    return !todo.done;
+                });
+            };
 
+        })
 
-
-
-=======
->>>>>>> 3bbada78e369608382a06011a1a79ac87498e038
-})
-
-
-
-<<<<<<< HEAD
-        ;
-=======
-        ;})();
->>>>>>> 3bbada78e369608382a06011a1a79ac87498e038
-
-
+})();
