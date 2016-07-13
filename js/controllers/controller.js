@@ -1,4 +1,4 @@
-vm.activeTabItems = function(){
+/*vm.activeTabItems = function(){
 
 }
 
@@ -27,4 +27,4 @@ return {
 	setStorage,
 	getStorage,
 }
-}
+}*/

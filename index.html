@@ -25,7 +25,7 @@
                             <button class='check' ng-click='header.changeStatus(item)' type='button'></button>
                             <p>{{item.name}}</p>
                             <input type='text' class='edit-todo'> 
-                            <button class='delete' ng-click="removeTodo(todo)">X</button>
+                            <button class='delete' ng-click="remove()">X</button>
                         </article>
                     </li>
                 <!-- example of existing item (incomplete)-->
@@ -63,7 +63,9 @@
 
                 <p class='remaining'><span class='incomplete-items'>{{vm.remaining}}</span> items left</p>
 
-                <p class='remaining'><span class='incomplete-items'>0</span> items left</p>
+                <span id="todo-count"><strong>{{remainingCount}}</strong></span>
+
+                <!--<p class='remaining'><span class='incomplete-items'>0</span> items left</p>-->
 <nav>
                     <ul>
                         <li><button class='show-all active' ng-click="header.activeCheck()">All</button></li>
@@ -71,7 +73,15 @@
                         <li><button ng-click="header.activeCheck('false')" class='show-completed'>Completed</button></li>
                     </ul>
                 </nav>
-                <button class='clear'>Clear completed</button>
+
+
+
+                <button class='clear' id='clear-completed' ng-click='clearCompletedTodos()'>Clear test</button>
+                
+                <!--<button class='clear' id="clear-completed" ng-click="clearCompletedTodos()" ng-show="completedCount">Clear Whoa</button>-->
+
+
+
             </footer>
         </main>
 <!--Angular script after npm install angular in Terminal-->
